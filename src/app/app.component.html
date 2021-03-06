@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand">Clientes</a>
+</nav>
+
+<div class="container mt-4">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div>
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" formControlName="nome">
+    </div>
+    <div class="mt-2">
+      <label class="form-label">E-mail</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="mt-4">
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+  </form>
+
+  <div class="mt-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Opção</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{cliente.id}}</td>
+          <td>{{cliente.nome}}</td>
+          <td>{{cliente.email}}</td>
+          <td><button class="btn btn-danger" (click)="delete(cliente)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
